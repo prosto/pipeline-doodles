@@ -1,0 +1,14 @@
+{
+  "name": "@repo/find-react",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.mjs",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "lint": "eslint src/"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*"
+  }
+}

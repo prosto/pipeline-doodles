@@ -1,0 +1,77 @@
+import type { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
+import { merge } from "lodash-es";
+
+import type { ElementUpdate, ExcalidrawAPI } from "./types";
+
+export interface ElementsMutation {
+  update: () => void;
+  withUpdateForElement: (
+    elementId: string,
+    data: ElementUpdate
+  ) => ElementsMutation;
+  withCommonUpdate: (data: ElementUpdate) => ElementsMutation;
+  withElementChanges: (elements: ExcalidrawElement[]) => ElementsMutation;
+}
+
+interface ElementsUpdaterProps {
+  excalidraw: ExcalidrawAPI;
+  elementsFilter?: (elementId: ExcalidrawElement["id"]) => boolean;
+  changeVersion?: boolean;
+  commitToHistory?: boolean;
+}
+
+export function elementsMutation({
+  excalidraw,
+  changeVersion = false,
+  commitToHistory = false,
+  elementsFilter,
+}: ElementsUpdaterProps): ElementsMutation {
+  const { updateElementsInPlace } = excalidraw.actions;
+
+  const updates: Record<string, ElementUpdate> = {};
+  const commonUpdates: ElementUpdate[] = [];
+
+  const actions: ElementsMutation = {
+    withUpdateForElement(elementId: string, data: ElementUpdate) {
+      updates[elementId] = data;
+      return actions;
+    },
+
+    withElementChanges(elements: ExcalidrawElement[]) {
+      console.log("elementsMutation:withElementChanges", elements);
+      elements.forEach((el) => (updates[el.id] = el));
+      return actions;
+    },
+
+    withCommonUpdate(data: ElementUpdate) {
+      commonUpdates.push(data);
+      return actions;
+    },
+
+    update() {
+      console.log("elementsMutation:updates", updates);
+      if (Object.keys(updates).length > 0) {
+        const updateEntries = Object.entries(updates);
+        const filteredUpdates = elementsFilter
+          ? updateEntries.filter(([elId]) => elementsFilter(elId))
+          : updateEntries;
+
+        if (commonUpdates.length > 0) {
+          filteredUpdates.forEach(([, data]) => {
+            merge(data, ...commonUpdates);
+          });
+        }
+
+        console.log("elementsMutation:filteredUpdates", filteredUpdates);
+
+        updateElementsInPlace({
+          elementsOrIds: Object.fromEntries(filteredUpdates),
+          changeVersion,
+          commitToHistory,
+        });
+      }
+    },
+  };
+
+  return actions;
+}

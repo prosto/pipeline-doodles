@@ -1,0 +1,38 @@
+{
+  "name": "@repo/node-specs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./registry": "./src/registry/index.ts",
+    "./schema": "./src/schema/index.ts",
+    "./specs": "./src/specs/index.ts",
+    "./types": "./src/types/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint src/ scripts/",
+    "type-check": "tsc --noEmit",
+    "validate-schemas": "tsx ./scripts/validate-schemas.ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/jest-presets": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.14.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.6.4",
+    "@repo/json-schema": "workspace:*",
+    "@repo/shared": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
+    "lodash-es": "^4.17.21",
+    "valtio": "^1.13.2"
+  }
+}

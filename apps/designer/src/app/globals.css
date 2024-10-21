@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+
+    --section: 242.55 55.91% 76.74%;
+    --section-foreground: 242.55 55.91% 76.74%;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 173.72deg 96.63% 34.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply tw-border-border;
+  }
+  body {
+    @apply tw-bg-background tw-text-foreground;
+  }
+}
+
+:root {
+  --rct-color-tree-bg: transparent;
+  --rct-item-height: 28px;
+  --rct-color-search-highlight-bg: #acccf1;
+
+  --rct-color-tree-focus-outline: transparent;
+  --rct-item-margin: 1px;
+  --rct-item-padding: 8px;
+  --rct-radius: 4px;
+  --rct-bar-offset: 6px;
+  --rct-bar-width: 4px;
+  --rct-bar-color: 173.72deg 96.63% 34.9%;
+  --rct-focus-outline: #000000;
+
+  --rct-color-focustree-item-selected-bg: #090e16;
+  --rct-color-focustree-item-hover-bg: 12 6.5% 15.1%;
+  --rct-color-focustree-item-hover-text: inherit;
+  --rct-color-focustree-item-active-bg: #090e16;
+  --rct-color-focustree-item-active-text: #4f4f4f;
+
+  --rct-arrow-size: 10px;
+  --rct-arrow-container-size: 16px;
+  --rct-arrow-padding: 6px;
+
+  --rct-cursor: pointer;
+
+  --rct-search-width: 120px;
+  --rct-search-height: 16px;
+  --rct-search-padding: 8px;
+  --rct-search-border: #b4b7bd;
+  --rct-search-border-bottom: #0366d6;
+  --rct-search-bg: #f8f9fa;
+  --rct-search-text: #000000;
+  --rct-search-text-offset: calc(var(--rct-search-padding) * 2 + 16px);
+  --rct-search-container-width: calc(
+    var(--rct-search-width) + var(--rct-search-text-offset) +
+      var(--rct-search-padding) + 2px
+  );
+}
+
+.cm-editor {
+  height: 100%;
+}
+
+.App-menu_top__left > div:first-child {
+  visibility: hidden !important;
+}
+
+.App-menu_bottom {
+  display: none !important;
+}
+
+footer.App-toolbar {
+  display: none !important;
+}
