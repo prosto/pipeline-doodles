@@ -19,6 +19,8 @@ Please notice the following key features of the app:
 - Once configuration is saved it should be possible to open pipeline definition from the app menu
 - **Later it will be possible to run pipeline directly from the app**
 
+https://github.com/user-attachments/assets/233c3478-23f1-4fd7-ab67-da52622e41a2
+
 ## Install
 
 Make sure you have `NodeJS` (>=18) and [pnpm](https://pnpm.io/installation) installed on you local.
